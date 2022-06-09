@@ -5,6 +5,9 @@ function App() {
 
   const [randomColors, setRandomColors] = useState(null)
   const [userChoice, setUserChoice] = useState('rgb(255,255,255)')
+  const [saveChoice1, setSaveChoice1] = useState('rgb(255,255,255)')
+  const [saveChoice2, setSaveChoice2] = useState('rgb(255,255,255)')
+  const [saveChoice3, setSaveChoice3] = useState('rgb(255,255,255)')
 
   const generateColors = () => {
     let randomRGBS = []
@@ -41,7 +44,21 @@ function App() {
   const handleUserChoice = (event) => {
     setUserChoice(getSelectedColor(event))
   }
+
+  const handleSaveChoice1 = (event) => {
+    setSaveChoice1(userChoice)
+  }
+
+  const handleSaveChoice2 = (event) => {
+    setSaveChoice2(userChoice)
+  }
+
+  const handleSaveChoice3 = (event) => {
+    setSaveChoice3(userChoice)
+  }
   
+  const handleSave = {}
+
   return (
     <div className='app'>
       <h1> Color Picker </h1>
@@ -54,9 +71,23 @@ function App() {
       </div>
       <input type="button" value="generate new colors" onClick={handleRandomize} />
       <div className='saved-colors'>
-        <div className='saved-color' id='saved1'></div>
-        <div className='saved-color' id='saved2'></div>
-        <div className='saved-color' id='saved3'></div>
+        <div 
+          className='saved-color' 
+          id='saved1' 
+          style={{backgroundColor: `${saveChoice1}`}}
+          onClick={handleSaveChoice1}>
+        </div>
+        <div 
+          className='saved-color' 
+          id='saved2' 
+          style={{backgroundColor: `${saveChoice2}`}}
+          onClick={handleSaveChoice2}>
+        </div>
+        <div 
+          className='saved-color' 
+          id='saved3' 
+          style={{backgroundColor: `${saveChoice3}`}}
+          onClick={handleSaveChoice3}></div>
       </div>
 
     </div>
